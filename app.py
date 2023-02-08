@@ -12,7 +12,7 @@ def handle_computation_request():
     image = data['image']
     env_vars = data['env_vars']
     input_data = data['input_data']
-    if not all([image, input_data, env_vars]):
+    if not all([image, input_data]):
         return jsonify({'error': 'Invalid request data'}), 400
     try:
         mounts = [docker.types.Mount(source=input_data['mount_source'], target=input_data['mount_target'],
